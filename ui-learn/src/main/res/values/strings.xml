@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ui-learn</string>
+    <string name="item_name_recycler_view">Recycler view</string>
+    <string name="item_name_coordinator">Coordinator layout</string>
+    <string name="item_name_surfaceview">Surface view</string>
+    <string name="item_name_animation">Animation</string>
+</resources>

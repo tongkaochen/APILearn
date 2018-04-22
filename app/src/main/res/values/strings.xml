@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">APILearn</string>
+    <string name="photo_menu_title">Photos wall</string>
+    <string name="toast_no_available">This item have not available activity</string>
+    <string name="permission_dialog_title">Need permissions</string>
+    <string name="permission_dialog_summary">This app need %1$s permissions, only allow them before continue.</string>
+    <string name="permission_dialog_button_allow">Allow</string>
+    <string name="permission_dialog_button_cancel">Cancel</string>
+    <string name="permission_allow_manually_title">Permission unavailable</string>
+    <string name="permission_allow_manually_summary">Permission %1$s is unavailable, please go to Settings to enable</string>
+    <string name="permission_allow_manually_ok">Go it</string>
+
+</resources>
