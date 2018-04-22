@@ -9,11 +9,23 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class RxActivity extends AppCompatActivity{
-
+    RxUtils rxUtils;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        RxUtils rxUtils = new RxUtils();
-        rxUtils.create();
+        rxUtils = new RxUtils();
+        //rxUtils.create();
+        //rxUtils.zip();
+        //rxUtils.interval();
+        //rxUtils.repeat();
+        //rxUtils.range();
+        rxUtils.fromArray();
+        rxUtils.fromIterable();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        rxUtils.unSubscribe();
     }
 }
