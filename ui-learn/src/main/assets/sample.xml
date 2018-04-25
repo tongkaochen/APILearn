@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<beans>
+    <bean name="Bean1" type="string" value="5">
+        <bean11>
+            <name>Bean11</name>
+            <type>integer</type>
+            <value>102</value>
+        </bean11>
+        <item name="Bean12" type="string" value="56" />
+        <item name="Bean13" type="string" value="57" />
+    </bean>
+    <bean name="Bean2" type="string" value="6" />
+    <bean name="Bean3" type="string" value="7" />
+    <bean name="Bean4" type="string" value="8" />
+    <bean name="Bean5" type="boolean" value="9" />
+    <bean name="Bean6" type="string" value="10" />
+    <bean name="Bean7" type="integer" value="11" />
+    <bean name="Bean8" type="string" value="12" />
+</beans>

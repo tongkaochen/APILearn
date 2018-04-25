@@ -9,12 +9,14 @@ import android.widget.Button;
 import com.tifone.ui.animation.AnimationActivity;
 import com.tifone.ui.calculator.CalculatorActivity;
 import com.tifone.ui.coordinator.CoordinatorActivity;
+import com.tifone.ui.customview.CustomViewActivity;
 import com.tifone.ui.json.JsonActivity;
 import com.tifone.ui.okhttp.OkhttpActivity;
 import com.tifone.ui.recyclerview.MyRecyclerViewActivity;
 import com.tifone.ui.rxjava.RxActivity;
 import com.tifone.ui.surfaceview.ViewActivity;
 import com.tifone.ui.viewpager.ViewPagerActivity;
+import com.tifone.ui.xmlparser.XmlParserActivity;
 
 public class MainActivity extends Activity implements View.OnClickListener{
 
@@ -40,6 +42,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.open_view_pager_btn).setOnClickListener(this);
         findViewById(R.id.open_okhttp_btn).setOnClickListener(this);
         findViewById(R.id.open_rxjava_btn).setOnClickListener(this);
+        findViewById(R.id.open_custom_view_btn).setOnClickListener(this);
+        findViewById(R.id.open_xml_parser_btn).setOnClickListener(this);
     }
 
     @Override
@@ -72,6 +76,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 break;
             case R.id.open_rxjava_btn:
                 intent.setClass(MainActivity.this, RxActivity.class);
+                break;
+            case R.id.open_custom_view_btn:
+                intent.setClass(MainActivity.this, CustomViewActivity.class);
+                break;
+            case R.id.open_xml_parser_btn:
+                intent.setClass(MainActivity.this, XmlParserActivity.class);
                 break;
             default:
                 return;

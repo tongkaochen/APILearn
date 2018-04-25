@@ -35,6 +35,8 @@
         <activity android:name=".viewpager.ViewPagerActivity" />
         <activity android:name=".okhttp.OkhttpActivity" />
         <activity android:name=".rxjava.RxActivity" />
+        <activity android:name=".customview.CustomViewActivity" />
+        <activity android:name=".xmlparser.XmlParserActivity" />
     </application>
 
 </manifest>

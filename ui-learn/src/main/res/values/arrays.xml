@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="spinner_items">
+        <item>基本图形</item>
+        <item>滑动索引选择条</item>
+    </array>
+</resources>

@@ -1,67 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:divider="@color/colorPrimary"
     tools:context="com.tifone.ui.MainActivity">
 
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_recycler_view_btn"
-        android:text="@string/item_name_recycler_view"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_coordinator_btn"
-        android:text="@string/item_name_coordinator"/>
+        <Button
+            android:id="@+id/open_recycler_view_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_name_recycler_view" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_surfaceview_btn"
-        android:text="@string/item_name_surfaceview"/>
+        <Button
+            android:id="@+id/open_coordinator_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_name_coordinator" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_animation_btn"
-        android:background="@drawable/list_divider"
-        android:elevation="18dp"
-        android:text="@string/item_name_animation"/>
+        <Button
+            android:id="@+id/open_surfaceview_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/item_name_surfaceview" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_calculator"
-        android:text="Open Calculator"/>
+        <Button
+            android:id="@+id/open_animation_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/list_divider"
+            android:elevation="18dp"
+            android:text="@string/item_name_animation" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_json"
-        android:text="JSON parser"/>
+        <Button
+            android:id="@+id/open_calculator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open Calculator" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_view_pager_btn"
-        android:text="View pager"/>
+        <Button
+            android:id="@+id/open_json"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="JSON parser" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_okhttp_btn"
-        android:text="Ok http"/>
+        <Button
+            android:id="@+id/open_view_pager_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View pager" />
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/open_rxjava_btn"
-        android:text="RxJava"/>
-</LinearLayout>
+        <Button
+            android:id="@+id/open_okhttp_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ok http" />
+
+        <Button
+            android:id="@+id/open_rxjava_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="RxJava" />
+
+        <Button
+            android:id="@+id/open_custom_view_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Custom view" />
+
+        <Button
+            android:id="@+id/open_xml_parser_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="XML parser" />
+    </LinearLayout>
+</ScrollView>
