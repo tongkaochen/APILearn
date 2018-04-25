@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?attr/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/hand_view_height"
+        android:background="?attr/colorPrimary" >
+
+    </RelativeLayout>
+
+    <com.tifone.ui.customview.demo.MyParentView
+        android:id="@+id/parent_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="?attr/colorPrimary">
+        <com.tifone.ui.customview.demo.MyScrollView
+            android:id="@+id/item_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white">
+            <include layout="@layout/view_demo_content_view" />
+
+        </com.tifone.ui.customview.demo.MyScrollView>
+    </com.tifone.ui.customview.demo.MyParentView>
+
+
+</LinearLayout>

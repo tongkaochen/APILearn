@@ -35,7 +35,6 @@
             android:id="@+id/open_animation_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/list_divider"
             android:elevation="18dp"
             android:text="@string/item_name_animation" />
 
