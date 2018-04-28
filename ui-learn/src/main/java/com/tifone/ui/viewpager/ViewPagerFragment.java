@@ -40,7 +40,7 @@ public class ViewPagerFragment extends Fragment {
     }
 
     private void buildFragments() {
-        mFragments = new ArrayList<ItemFragment>();
+        mFragments = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             ViewListFragment fragment = new ViewListFragment();
             fragment.setTitle("Title " + (i + 1));

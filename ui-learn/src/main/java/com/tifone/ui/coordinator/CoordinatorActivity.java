@@ -53,7 +53,7 @@ public class CoordinatorActivity extends AppCompatActivity{
     }
 
     private List<String> makeDatas() {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.clear();
         for (int i = 0; i < 50; i++) {
             list.add("Item " + i);

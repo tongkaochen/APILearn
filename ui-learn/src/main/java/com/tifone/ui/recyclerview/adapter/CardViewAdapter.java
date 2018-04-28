@@ -39,7 +39,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     public CardViewAdapter(Context context, List<String> dataSet) {
         mDataSet = dataSet;
         mInflater = LayoutInflater.from(context);
-        mHeight = new ArrayList<Integer>(dataSet.size());
+        mHeight = new ArrayList<>(dataSet.size());
         for (int i = 0; i < dataSet.size(); i++) {
             mHeight.add((int) (400 + Math.random() * 300));
         }

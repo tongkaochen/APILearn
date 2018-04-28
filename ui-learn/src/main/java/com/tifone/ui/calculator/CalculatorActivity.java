@@ -99,7 +99,7 @@ public class CalculatorActivity extends AppCompatActivity implements OnGridItemC
     private String resolveValue(final String src) {
 
         Log.d("tifone", "src = " + src);
-        boolean isOperator = operator.indexOf(src) != -1;
+        boolean isOperator = operator.contains(src);
         String result = src;
         if (isOperator) {
 
@@ -157,9 +157,9 @@ public class CalculatorActivity extends AppCompatActivity implements OnGridItemC
         if (TextUtils.isEmpty(valueTarget)) {
             return valueSrc + "+";
         }
-        if (valueSrc.indexOf(".") != -1) {
+        if (valueSrc.contains(".")) {
             double src = Double.valueOf(valueSrc);
-            if (valueTarget.indexOf(".") != -1) {
+            if (valueTarget.contains(".")) {
                 return String.valueOf(src + Double.valueOf(valueTarget));
             }
             return String.valueOf(src + Integer.valueOf(valueTarget));

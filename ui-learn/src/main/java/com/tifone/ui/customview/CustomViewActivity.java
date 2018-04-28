@@ -1,7 +1,9 @@
 package com.tifone.ui.customview;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.PersistableBundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -40,7 +42,7 @@ public class CustomViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.custom_view_activity_main_layout);
         mFragmentList = new SparseArray<>();
-        mSpinner = (Spinner) findViewById(R.id.list_spinner);
+        mSpinner = findViewById(R.id.list_spinner);
         mFragmentManager = getSupportFragmentManager();
         if (savedInstanceState != null) {
             showedFragmentKey = savedInstanceState.getInt(DEFAULT_FRAGMENT);
@@ -71,7 +73,6 @@ public class CustomViewActivity extends AppCompatActivity {
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
             }
         });
     }
@@ -173,4 +174,5 @@ public class CustomViewActivity extends AppCompatActivity {
                 break;
         }
     }
+
 }

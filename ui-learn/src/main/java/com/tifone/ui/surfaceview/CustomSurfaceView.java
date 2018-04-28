@@ -67,7 +67,7 @@ public class CustomSurfaceView extends SurfaceView implements SurfaceHolder.Call
     }
 
     class DrawThread extends Thread {
-        private SurfaceHolder mHolder;
+        private final SurfaceHolder mHolder;
         private Context mContext;
         private Paint mPaint;
         private int radius = 0;

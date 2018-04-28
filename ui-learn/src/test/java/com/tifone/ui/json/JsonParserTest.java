@@ -74,7 +74,7 @@ public class JsonParserTest {
         return new JsonBean("Jack", "Android developer", "Is a hard worker", "shenzhen" , 2);
     }
     private List<JsonBean> getBeanListData() {
-        List<JsonBean> list = new ArrayList<JsonBean>();
+        List<JsonBean> list = new ArrayList<>();
         JsonBean bean1 = new JsonBean("Jack", "Android developer", "Is a hard worker", "shenzhen" , 2);
         JsonBean bean2 = new JsonBean("Jack2", "Android developer2", "Is a hard worker2", "shenzhen2" , 3);
         list.add(bean1);

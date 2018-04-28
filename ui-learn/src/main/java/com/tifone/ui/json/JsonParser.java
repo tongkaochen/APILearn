@@ -66,7 +66,7 @@ public class JsonParser {
         return jsonArray.toString();
     }
     public List<JsonBean> parserJsonArray(String json) {
-        List<JsonBean> mList = new ArrayList<JsonBean>();
+        List<JsonBean> mList = new ArrayList<>();
         try {
             JSONArray jsonArray = new JSONArray(json);
             for (int i = 0; i < jsonArray.length(); i++) {

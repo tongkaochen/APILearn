@@ -37,6 +37,7 @@
         <activity android:name=".rxjava.RxActivity" />
         <activity android:name=".customview.CustomViewActivity" />
         <activity android:name=".xmlparser.XmlParserActivity" />
+        <activity android:name=".notification.NotificationActivity" />
     </application>
 
 </manifest>
