@@ -38,6 +38,7 @@
         <activity android:name=".customview.CustomViewActivity" />
         <activity android:name=".xmlparser.XmlParserActivity" />
         <activity android:name=".notification.NotificationActivity" />
+        <activity android:name=".retrofit.RetrofitActivity" />
     </application>
 
 </manifest>
