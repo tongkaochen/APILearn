@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.Button;
 
 import com.tifone.ui.animation.AnimationActivity;
+import com.tifone.ui.annotation.AnnotationActivity;
 import com.tifone.ui.calculator.CalculatorActivity;
 import com.tifone.ui.coordinator.CoordinatorActivity;
 import com.tifone.ui.customview.CustomViewActivity;
+import com.tifone.ui.glide.GlideActivity;
 import com.tifone.ui.json.JsonActivity;
 import com.tifone.ui.notification.NotificationActivity;
 import com.tifone.ui.okhttp.OkhttpActivity;
@@ -48,6 +50,8 @@ public class MainActivity extends Activity implements View.OnClickListener{
         findViewById(R.id.open_xml_parser_btn).setOnClickListener(this);
         findViewById(R.id.open_notification_btn).setOnClickListener(this);
         findViewById(R.id.open_retrofit_btn).setOnClickListener(this);
+        findViewById(R.id.open_annotation_btn).setOnClickListener(this);
+        findViewById(R.id.open_glide_btn).setOnClickListener(this);
     }
 
     @Override
@@ -92,6 +96,12 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 break;
             case R.id.open_retrofit_btn:
                 intent.setClass(MainActivity.this, RetrofitActivity.class);
+                break;
+            case R.id.open_annotation_btn:
+                intent.setClass(MainActivity.this, AnnotationActivity.class);
+                break;
+            case R.id.open_glide_btn:
+                intent.setClass(MainActivity.this, GlideActivity.class);
                 break;
             default:
                 return;

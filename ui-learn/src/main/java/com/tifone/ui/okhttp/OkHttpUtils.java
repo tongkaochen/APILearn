@@ -61,10 +61,10 @@ public class OkHttpUtils {
         }).start();
     }
 
-    public void getDataAsync() {
+    public void getDataAsync(String url) {
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("http://www.baidu.com")
+                .url(url)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override

@@ -27,7 +27,8 @@ public class OkhttpActivity extends AppCompatActivity {
         webView = findViewById(R.id.web_view);
         OkHttpUtils utils = new OkHttpUtils();
         RequestHandler handler = new RequestHandler();
-        utils.getDataSynchronous(handler);
+        //utils.getDataSynchronous(handler);
+        utils.getDataAsync("http://toutiao.com/api/article/recent/?source=2&category=news_hot&as=A1D5D87595C3287");
     }
 
     class RequestHandler extends Handler {

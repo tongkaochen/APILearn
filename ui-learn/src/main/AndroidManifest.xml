@@ -39,6 +39,8 @@
         <activity android:name=".xmlparser.XmlParserActivity" />
         <activity android:name=".notification.NotificationActivity" />
         <activity android:name=".retrofit.RetrofitActivity" />
+        <activity android:name=".annotation.AnnotationActivity" />
+        <activity android:name=".glide.GlideActivity" />
     </application>
 
 </manifest>

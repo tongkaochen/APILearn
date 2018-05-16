@@ -1,16 +1,20 @@
 package com.tifone.ui.retrofit;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
+import java.io.IOException;
 import java.util.List;
 
 import io.reactivex.Observable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -26,13 +30,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitUtils {
 
 
-    Retrofit getRetrofit() {
+    public Retrofit getRetrofit(String baseUrl) {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd hh:mm:ss")
                 .create();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://www.baidu.com/")
+                .baseUrl(baseUrl)
                 // Gson converter
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -40,8 +44,8 @@ public class RetrofitUtils {
         return retrofit;
     }
 
-    RetrofitService getService() {
-        return getRetrofit().create(RetrofitService.class);
+    public RetrofitService getService() {
+        return getRetrofit("http://toutiao.com/api/article/recent/?source=2&category=news_hot&as=A1D5D87595C3287").create(RetrofitService.class);
     }
 
     public void callMethod() {
@@ -66,6 +70,34 @@ public class RetrofitUtils {
 
                     }
                 });
+    }
+
+    public String getOriginalJsonData() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://www.toutiao.com")
+                .build();
+        DemoService service = retrofit.create(DemoService.class);
+        Call<ResponseBody> call = service.getResult();
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                try {
+                    String jsonStr = new String(response.body().bytes());
+                    String jsonMsg = response.message().toString();
+                    Log.e("tifone", jsonStr);
+                    Log.e("tifone", jsonMsg);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+
+            }
+        });
+
+        return null;
     }
 
 }
