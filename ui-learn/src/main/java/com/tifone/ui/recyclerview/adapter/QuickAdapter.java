@@ -7,18 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.tifone.ui.R;
-
 import java.util.List;
 
 /**
  * Created by tongkao.chen on 2018/4/2.
  */
 
-public abstract class QuickAdaper<T> extends RecyclerView.Adapter<QuickAdaper.QuickViewHolder> {
+public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickAdapter.QuickViewHolder> {
 
     private List<T> mDataSet;
-    public QuickAdaper(List<T> dataSet) {
+    public QuickAdapter(List<T> dataSet) {
         mDataSet = dataSet;
     }
 

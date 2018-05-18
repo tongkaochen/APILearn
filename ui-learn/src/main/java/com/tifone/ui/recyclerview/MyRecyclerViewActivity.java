@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,7 +28,7 @@ import java.util.List;
 
 public class MyRecyclerViewActivity extends AppCompatActivity implements CardViewAdapter.OnItemClickListener {
 
-    private RecyclerView mRecyclerView;
+    private PullRefreshRecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
     private RecyclerView.LayoutManager mLayoutManger;
     private ListItemDividerDecoration mItemDivider;
@@ -118,7 +119,7 @@ public class MyRecyclerViewActivity extends AppCompatActivity implements CardVie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.recycler_view_activity);
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView =  findViewById(R.id.my_recycler_view);
         // 如果适配器的内容不会影响RecyclerView的大小时，使用这个配置可以达到优化的效果
         //mRecyclerView.setHasFixedSize(true);
 
@@ -139,6 +140,10 @@ public class MyRecyclerViewActivity extends AppCompatActivity implements CardVie
         CardViewAdapter adapter = new CardViewAdapter(this, mDataSetList);
         adapter.setItemClickListener(this);
         mRecyclerView.setAdapter(adapter);
+        View headerView = LayoutInflater.from(this).inflate(R.layout.recycler_view_refresh_header, null);
+        View footerView = LayoutInflater.from(this).inflate(R.layout.recycler_view_refresh_footer, null);
+
+
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mItemDivider = new ListItemDividerDecoration(this, ListItemDividerDecoration.VERTICAL);
         mStaggeredDivider = new StaggeredDividerDecoration(this, StaggeredDividerDecoration.HORIZONTAL);

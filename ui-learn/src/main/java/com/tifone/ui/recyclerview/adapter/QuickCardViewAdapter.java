@@ -8,7 +8,7 @@ import java.util.List;
  * Created by tongkao.chen on 2018/4/2.
  */
 
-public class QuickCardViewAdapter extends QuickAdaper<String> {
+public class QuickCardViewAdapter extends QuickAdapter<String> {
     public QuickCardViewAdapter(List<String> dataSet) {
         super(dataSet);
     }

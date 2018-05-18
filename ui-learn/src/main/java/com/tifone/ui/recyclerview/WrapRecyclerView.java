@@ -13,7 +13,7 @@ import com.tifone.ui.recyclerview.adapter.HeaderFooterWrapAdapter;
  */
 public class WrapRecyclerView extends RecyclerView {
     private HeaderFooterWrapAdapter mWrapAdapter;
-    private RecyclerView.Adapter mAdatper;
+    private RecyclerView.Adapter mAdapter;
 
 
     public WrapRecyclerView(Context context) {
@@ -30,17 +30,17 @@ public class WrapRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
-        if (mAdatper != null) {
-            mAdatper.unregisterAdapterDataObserver(mDataObserver);
+        if (mAdapter != null) {
+            mAdapter.unregisterAdapterDataObserver(mDataObserver);
         }
-        mAdatper = adapter;
+        mAdapter = adapter;
         if (adapter instanceof HeaderFooterWrapAdapter) {
             mWrapAdapter = (HeaderFooterWrapAdapter) adapter;
         } else {
             mWrapAdapter = new HeaderFooterWrapAdapter(adapter);
         }
         super.setAdapter(mWrapAdapter);
-        mWrapAdapter.registerAdapterDataObserver(mDataObserver);
+        mAdapter.registerAdapterDataObserver(mDataObserver);
         // 解决GridLayoutManager添加的头部和底部不占一行的问题
         mWrapAdapter.adjustSpanSize(this);
     }
@@ -71,32 +71,63 @@ public class WrapRecyclerView extends RecyclerView {
     private AdapterDataObserver mDataObserver = new AdapterDataObserver() {
         @Override
         public void onChanged() {
-            super.onChanged();
+            if (mAdapter == null) {
+                return;
+            }
+            // 列表Adapter更新 包裹的也需要更新不然列表的notifyDataSetChanged没效果
+            if (mWrapAdapter != mAdapter) {
+                mWrapAdapter.notifyDataSetChanged();
+            }
         }
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount) {
-            super.onItemRangeChanged(positionStart, itemCount);
+            if (mAdapter == null) {
+                return;
+            }
+            if (mWrapAdapter != mAdapter) {
+                mWrapAdapter.notifyItemChanged(positionStart);
+            }
         }
 
         @Override
         public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
-            super.onItemRangeChanged(positionStart, itemCount, payload);
+            if (mAdapter == null) {
+                return;
+            }
+            if (mWrapAdapter != mAdapter) {
+                mWrapAdapter.notifyItemChanged(positionStart, payload);
+            }
         }
 
         @Override
         public void onItemRangeInserted(int positionStart, int itemCount) {
-            super.onItemRangeInserted(positionStart, itemCount);
+            if (mAdapter == null) {
+                return;
+            }
+            if (mWrapAdapter != mAdapter) {
+                mWrapAdapter.notifyItemInserted(positionStart);
+            }
         }
 
         @Override
         public void onItemRangeRemoved(int positionStart, int itemCount) {
-            super.onItemRangeRemoved(positionStart, itemCount);
+            if (mAdapter == null) {
+                return;
+            }
+            if (mWrapAdapter != mAdapter) {
+                mWrapAdapter.notifyItemRemoved(positionStart);
+            }
         }
 
         @Override
         public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
-            super.onItemRangeMoved(fromPosition, toPosition, itemCount);
+            if (mAdapter == null) {
+                return;
+            }
+            if (mWrapAdapter != mAdapter) {
+                mWrapAdapter.notifyItemMoved(fromPosition, toPosition);
+            }
         }
     };
 }

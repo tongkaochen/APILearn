@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/APILearn.iml" filepath="$PROJECT_DIR$/APILearn.iml" />
-      <module fileurl="file://$PROJECT_DIR$/APILearn.iml" filepath="$PROJECT_DIR$/APILearn.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ui-learn/ui-learn.iml" filepath="$PROJECT_DIR$/ui-learn/ui-learn.iml" />
       <module fileurl="file://$PROJECT_DIR$/unit-test/unit-test.iml" filepath="$PROJECT_DIR$/unit-test/unit-test.iml" />
