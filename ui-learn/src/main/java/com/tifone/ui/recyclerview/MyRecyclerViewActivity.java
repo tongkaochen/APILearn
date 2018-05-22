@@ -48,17 +48,6 @@ public class MyRecyclerViewActivity extends AppCompatActivity implements CardVie
             "mAdapter = new MyAdapter(myDataset);",
             "mAdapter = new MyAdapter(myDataset);",
             "用于项目定位的布局管理器",
-            "用于通用项目操作（例如删除或添加项目）的默认动画",
-            "LinearLayoutManager 以垂直或水平滚动列表方式显示项目。 ",
-            "GridLayoutManager 在网格中显示项目。",
-            "StaggeredGridLayoutManager 在分散对齐网格中显示项目。",
-            "如果要创建一个自定义布局管理器，请扩展 RecyclerView.LayoutManager 类别。",
-            "mRecyclerView.setHasFixedSize(true);",
-            "mLayoutManager = new LinearLayoutManager(this);",
-            "mRecyclerView.setLayoutManager(mLayoutManager);",
-            "mAdapter = new MyAdapter(myDataset);",
-            "mAdapter = new MyAdapter(myDataset);",
-            "用于项目定位的布局管理器",
             "mAdapter = new MyAdapter(myDataset);"
     };
 
@@ -92,6 +81,7 @@ public class MyRecyclerViewActivity extends AppCompatActivity implements CardVie
 
         DefaultRefreshCreator creator = new DefaultRefreshCreator();
         mRecyclerView.addRefreshViewCreator(creator);
+        mRecyclerView.addLoadMoreViewCreator(new DefaultLoadMoreCreator());
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mItemDivider = new ListItemDividerDecoration(this, ListItemDividerDecoration.VERTICAL);
         mStaggeredDivider = new StaggeredDividerDecoration(this, StaggeredDividerDecoration.HORIZONTAL);

@@ -61,7 +61,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<CardViewAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         ViewGroup.LayoutParams params = holder.cardView.getLayoutParams();
-        params.height = mHeight.get(position);
+        //params.height = mHeight.get(position);
         // 获取对应位置的数据
         // 用该元素提供view的内容
         holder.textView.setText(mDataSet.get(position));

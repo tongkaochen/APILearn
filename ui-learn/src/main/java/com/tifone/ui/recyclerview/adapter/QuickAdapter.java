@@ -1,6 +1,7 @@
 package com.tifone.ui.recyclerview.adapter;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public abstract class QuickAdapter<T> extends RecyclerView.Adapter<QuickAdapter.
     @Override
     public void onBindViewHolder(QuickViewHolder holder, int position) {
         convertView(holder, mDataSet.get(position), position);
+
     }
 
     @Override
