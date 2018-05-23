@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 
 /**
  * Created by tongkao.chen on 2018/5/18.
@@ -30,10 +31,12 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
     public static final int REFRESH_STATUS_LOOSEN_REFRESHING = 1001;
     public static final int REFRESH_STATUS_REFRESHING = 1002;
     public static final int REFRESH_STATUS_PULL_DOWN_REFRESH = 1003;
-    public static final int LOAD_STATUS_NORMAL = 1004;
-    public static final int LOAD_STATUS_LOOSEN_TO_LOAD = 1005;
-    public static final int LOAD_STATUS_LOADING = 1006;
-    public static final int LOAD_STATUS_PULL_DOWN_TO_LOAD = 1007;
+    public static final int REFRESH_STATUS_COMPLETE = 1004;
+    public static final int LOAD_STATUS_NORMAL = 1005;
+    public static final int LOAD_STATUS_LOOSEN_TO_LOAD = 1006;
+    public static final int LOAD_STATUS_LOADING = 1007;
+    public static final int LOAD_STATUS_PULL_UP_TO_LOAD = 1008;
+    public static final int LOAD_STATUS_LOAD_COMPLETE = 1009;
     private int mRefreshViewHeight;
     // 拖拽阻力系数
     private float mDragIndex = 0.35f;
@@ -110,7 +113,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
         return super.dispatchTouchEvent(ev);
     }
 
-    public void reset() {
+    public void resetRefresh() {
         Log.e("tifone", "do something");
         doAnimator(mPullRefreshView.getLayoutParams().height, 0);
         updateRefreshStatus(0);
@@ -119,12 +122,12 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
     private void restoreLoadMoreView() {
         int currentHeight = mLoadMoreView.getLayoutParams().height;
         int finalHeight = 0;
-        logger("mLoadMoreViewHeight = " + mLoadMoreViewHeight);
         if (mLoadMoreState == LOAD_STATUS_LOOSEN_TO_LOAD) {
+            logger("loading...");
             finalHeight = mLoadMoreViewHeight;
             mLoadMoreState = LOAD_STATUS_LOADING;
             if (mLoadMoreCreator != null) {
-                mLoadMoreCreator.onLoad(mLoadMoreState);
+                mLoadMoreCreator.onLoad(LOAD_STATUS_LOADING);
                 mLoadMoreCreator.onLoading();
             }
             if (mListener != null) {
@@ -133,15 +136,35 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
             postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    loadProcessReset();
-                    if (mLoadMoreCreator != null) {
-                        mLoadMoreCreator.onLoadComplete();
-                    }
+                    loadComplete();
                 }
             }, 2000);
         }
         doLoadMoreAnimator(currentHeight, finalHeight);
         mLoadViewDrag = false;
+    }
+    public void loadComplete() {
+        if (mLoadMoreCreator != null) {
+            mLoadMoreCreator.onLoadComplete();
+        }
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadProcessReset();
+            }
+        }, 1500);
+    }
+
+    public void refreshComplete() {
+        if (mRefreshCreator != null) {
+            mRefreshCreator.onRefreshComplete();
+        }
+        postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resetRefresh();
+            }
+        }, 1500);
     }
 
     private void loadProcessReset() {
@@ -165,7 +188,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
             postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    reset();
+                    refreshComplete();
                 }
             }, 2000);
         }
@@ -185,6 +208,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
                 setPullRefreshViewHeight(height);
             }
         });
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
         animator.start();
     }
     private void doLoadMoreAnimator(int from, int to) {
@@ -197,6 +221,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
                 setLoadMoreViewHeight(height);
             }
         });
+        animator.setInterpolator(new AccelerateDecelerateInterpolator());
         animator.start();
     }
 
@@ -224,6 +249,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
                 if (isScrollToBottom() && isFullContent() ) {
                     if (distanceY < 0) {
                         setLoadMoreViewHeight(Math.abs(distanceY));
+                        updateLoadMoreStatus(Math.abs(distanceY));
                         mLoadViewDrag = true;
                         return false;
                     }
@@ -259,7 +285,6 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
 
     private void setLoadMoreViewHeight(int height) {
         logger("setLoadMoreViewHeight = " + height);
-        updateLoadMoreStatus(height);
         ViewGroup.LayoutParams params = mLoadMoreView.getLayoutParams();
         params.height = height;
         mLoadMoreView.setLayoutParams(params);
@@ -269,7 +294,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
         if (height <= 0) {
             mLoadMoreState = LOAD_STATUS_NORMAL;
         } else if (height < mLoadMoreViewHeight) {
-            mLoadMoreState = LOAD_STATUS_PULL_DOWN_TO_LOAD;
+            mLoadMoreState = LOAD_STATUS_PULL_UP_TO_LOAD;
         } else {
             mLoadMoreState = LOAD_STATUS_LOOSEN_TO_LOAD;
         }
@@ -281,7 +306,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
     private void updateRefreshStatus(int height) {
         if (height <= 0) {
             mPullRefreshState = REFRESH_STATUS_NORMAL;
-        } else if (height < mRefreshViewHeight) {
+        } else if (height < mRefreshViewHeight * 2) {
             mPullRefreshState = REFRESH_STATUS_PULL_DOWN_REFRESH;
         } else {
             mPullRefreshState = REFRESH_STATUS_LOOSEN_REFRESHING;

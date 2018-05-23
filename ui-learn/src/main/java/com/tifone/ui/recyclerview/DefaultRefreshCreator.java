@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -39,16 +40,12 @@ public class DefaultRefreshCreator extends RefreshViewCreator {
         switch (currentRefreshStatus) {
             case PullRefreshRecyclerView.REFRESH_STATUS_LOOSEN_REFRESHING:
                 mTextView.setText("松开后刷新");
-                if (currentRefreshStatus != mLastStatus) {
-                    doAnimator(0, 180, 1);
-                }
+                mImageView.setImageResource(R.drawable.ic_upward);
                 break;
             case PullRefreshRecyclerView.REFRESH_STATUS_PULL_DOWN_REFRESH:
                 mTextView.setText("下拉刷新");
                 mImageView.setImageResource(R.drawable.ic_downward);
-                if (currentRefreshStatus != mLastStatus) {
-                    doAnimator(0, 180, 1);
-                }
+
                 break;
             case PullRefreshRecyclerView.REFRESH_STATUS_REFRESHING:
                 mTextView.setText("正在刷新");
@@ -82,5 +79,16 @@ public class DefaultRefreshCreator extends RefreshViewCreator {
 
     @Override
     public void onStopRefresh() {
+    }
+
+    @Override
+    public void onRefreshComplete() {
+        mTextView.setText("刷新完成");
+        mImageView.clearAnimation();
+        mImageView.setImageResource(R.drawable.ic_success);
+        Animation animation = AnimationUtils.loadAnimation(mImageView.getContext(), R.anim.image_scale_anim);
+        animation.setDuration(500);
+        mImageView.startAnimation(animation);
+        mTextView.startAnimation(animation);
     }
 }

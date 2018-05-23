@@ -34,4 +34,6 @@ public abstract class RefreshViewCreator {
      */
     public abstract void onStopRefresh();
 
+    public abstract void onRefreshComplete();
+
 }
