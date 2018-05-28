@@ -4,6 +4,7 @@ ext {
     target_sdk_version = 27
     compile_sdk_version = 27
     min_sdk_version = 16
+    multi_feature_recyclerview_lib = "0.0.1"
 }
 
 android {
@@ -28,6 +29,11 @@ android {
     }
 
 }
+repositories{
+    flatDir{
+        dirs 'libs'
+    }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -46,11 +52,11 @@ dependencies {
 
     testImplementation 'org.json:json:20140107'
     // https://mvnrepository.com/artifact/com.google.code.gson/gson
-    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
 
-    compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    compile 'io.reactivex.rxjava2:rxjava:2.1.12'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
 
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
@@ -59,4 +65,6 @@ dependencies {
     // 图片加载
     implementation 'com.github.bumptech.glide:glide:4.6.1'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+
+    implementation (name: "multi-feature-recyclerview-${multi_feature_recyclerview_lib}", ext: 'aar')
 }

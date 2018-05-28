@@ -54,18 +54,18 @@ public class MyRecyclerViewActivity extends AppCompatActivity implements CardVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.recycler_view_activity);
-        mRecyclerView =  findViewById(R.id.my_recycler_view);
-        // 如果适配器的内容不会影响RecyclerView的大小时，使用这个配置可以达到优化的效果
-        //mRecyclerView.setHasFixedSize(true);
-
         // 使用线性布局管理器
         mLinearLayoutManager = new LinearLayoutManager(this);
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mGridLayoutMager = new GridLayoutManager(this, 2);
         mStaggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
-
-
+        setupRecyclerViewWithCustomization();
+    }
+    private void setupRecyclerViewWithCustomization() {
+        setContentView(R.layout.recycler_view_activity);
+        mRecyclerView =  findViewById(R.id.my_recycler_view);
+        // 如果适配器的内容不会影响RecyclerView的大小时，使用这个配置可以达到优化的效果
+        //mRecyclerView.setHasFixedSize(true);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
         //mRecyclerView.setLayoutManager(staggeredGridLayoutManager);
@@ -87,6 +87,11 @@ public class MyRecyclerViewActivity extends AppCompatActivity implements CardVie
         mStaggeredDivider = new StaggeredDividerDecoration(this, StaggeredDividerDecoration.HORIZONTAL);
         //mRecyclerView.addItemDecoration(mItemDivider);
         //mRecyclerView.setAdapter(new QuickCardViewAdapter(mDataSetList));
+
+    }
+
+    private void setupRecyclerViewWithLib() {
+
     }
 
     @Override

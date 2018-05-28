@@ -344,9 +344,7 @@ public class PullRefreshRecyclerView extends WrapRecyclerView {
 
         }
         mScreenHeight = getHeight();
-        logger("mScreenHeight = " +mScreenHeight);
         mChildContentHeight = getLayoutManager().getHeight();
-        logger("mChildContentHeight = " +mChildContentHeight);
     }
 
     @Override

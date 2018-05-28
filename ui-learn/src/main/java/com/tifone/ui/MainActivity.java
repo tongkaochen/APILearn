@@ -15,7 +15,7 @@ import com.tifone.ui.glide.GlideActivity;
 import com.tifone.ui.json.JsonActivity;
 import com.tifone.ui.notification.NotificationActivity;
 import com.tifone.ui.okhttp.OkhttpActivity;
-import com.tifone.ui.recyclerview.MyRecyclerViewActivity;
+import com.tifone.ui.recyclerview.MyPullLoadActivity;
 import com.tifone.ui.retrofit.RetrofitActivity;
 import com.tifone.ui.rxjava.RxActivity;
 import com.tifone.ui.surfaceview.ViewActivity;
@@ -62,7 +62,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
                 intent.setClass(MainActivity.this, CoordinatorActivity.class);
                 break;
             case R.id.open_recycler_view_btn:
-                intent.setClass(MainActivity.this, MyRecyclerViewActivity.class);
+                intent.setClass(MainActivity.this, MyPullLoadActivity.class);
                 break;
             case R.id.open_surfaceview_btn:
                 intent.setClass(MainActivity.this, ViewActivity.class);
